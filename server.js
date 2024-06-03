@@ -227,7 +227,10 @@ const setupDeepgram = (socket, user_interview, interview) => {
       const transcript = data.channel.alternatives[0].transcript ?? "";
       if (transcript !== "") {
         lastMessageTime = new Date();
-        if (data.is_final) runningTranscript += " " + transcript;
+        if (data.is_final) {
+          runningTranscript += " " + transcript;
+          socket.emit("running-transcript", runningTranscript);
+        }
       }
 
       socket.emit("data", data);
