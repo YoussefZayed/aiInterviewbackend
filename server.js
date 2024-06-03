@@ -65,14 +65,11 @@ const setupDeepgram = (socket, user_interview, interview) => {
       const minKeepAliveDiff = 9 * 1000;
       const lastKeepAliveTimeDiff = new Date() - lastkeepalive; // this returns the difference in milliseconds
       if (lastKeepAliveTimeDiff > minKeepAliveDiff) {
-        console.log("deepgram: keepalive");
-
         deepgram.keepAlive();
         lastkeepalive = new Date();
       }
       if (shouldReturnResponse()) {
         isAiWorking = true;
-        console.log("Getting AI");
         socket.emit("transcript", runningTranscript);
         getAiResponse(runningTranscript);
         runningTranscript = "";
@@ -121,7 +118,6 @@ const setupDeepgram = (socket, user_interview, interview) => {
     if (runningTranscript == "") return false;
     const minMillSecondsDiff = 4 * 500;
     const lastMessageTimeDiff = new Date() - lastMessageTime; // this returns the difference in milliseconds
-    console.log("lastMessageTimeDiff", lastMessageTimeDiff, lastMessageTime);
     return lastMessageTimeDiff > minMillSecondsDiff;
   };
 
@@ -229,7 +225,6 @@ const setupDeepgram = (socket, user_interview, interview) => {
 
     deepgram.addListener(LiveTranscriptionEvents.Transcript, (data) => {
       const transcript = data.channel.alternatives[0].transcript ?? "";
-      console.log("transcript", transcript);
       if (transcript !== "") {
         lastMessageTime = new Date();
         if (data.is_final) runningTranscript += " " + transcript;
