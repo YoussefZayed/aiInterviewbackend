@@ -404,6 +404,7 @@ process.on("SIGINT", () => {
   });
 });
 
-server.listen(3000, () => {
-  console.log("listening on localhost:3000");
+// listen on environment port or 3000
+server.listen(process.env.PORT || 3000, () => {
+  console.log("listening on localhost:" + process.env.PORT || 3000);
 });
