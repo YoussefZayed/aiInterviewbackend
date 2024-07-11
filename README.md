@@ -15,3 +15,5 @@ This is the backend for the AI interviewing project.
 - run `npm run migrate` to run db migrations
 
 - run `npm run start` to start the server
+
+[Frontend Repo](https://github.com/YoussefZayed/aiinterviewfrontend)
