@@ -4,7 +4,6 @@
   "description": "A project to get up and running with Deepgram's livestream speech-to-text API",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "migrate": "knex migrate:latest",
     "migrate:rollback": "knex migrate:rollback",
